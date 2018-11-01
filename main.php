@@ -85,18 +85,16 @@ class Person extends Entity {
             $stmt->bind_param("sssi", $this->name, $this->birthday, $this->phone, $this->id);
             $stmt->execute();
             return $stmt;
-        } else {
-            return null;
-        }
+        } 
+        return null;
        
     }
 
     function delete() {
         if($this->read($this->id)){
             return self::$conn->query("delete from person where id=$this->id") or die(self::$conn->error);
-        } else {
-            return null;
         }
+        return null;
     }
 }
 
